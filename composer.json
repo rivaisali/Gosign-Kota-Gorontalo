@@ -1,0 +1,21 @@
+{
+    "name": "rivaisali/gosign-client",
+    "description": "Library Integrasi Gosign",
+    "type": "library",
+    "require": {
+        "php": "7.4.*"
+    },
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": {
+            "Rivaisali\\GosignClient\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "rivaisali",
+            "email": "m.rivai.sali@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
