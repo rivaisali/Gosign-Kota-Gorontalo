@@ -1,5 +1,5 @@
 <?php
-namespace GoSign;
+namespace GosignClient;
 
 class Handler
 {
