@@ -3,13 +3,14 @@
     "description": "Library Integrasi Gosign",
     "type": "library",
     "require": {
-        "php": "7.4.*"
+        "php": ">=7.4",
+        "php-http/curl-client": "2.x-dev"
     },
     "license": "proprietary",
     "autoload": {
         "psr-4": {
-            "Rivaisali\\GosignClient\\": "src/"
-        }
+            "RivaiSali\\GosignClient\\": "src/"
+          }
     },
     "authors": [
         {
