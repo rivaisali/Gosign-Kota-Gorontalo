@@ -3,7 +3,9 @@
     "description": "Library Integrasi Gosign",
     "type": "library",
     "require": {
-        "php": ">=7.4"
+        "php": ">=5.4",
+        "ext-curl": "*",
+        "ext-json": "*"
     },
     "license": "proprietary",
     
