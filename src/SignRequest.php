@@ -3,7 +3,7 @@ namespace GosignClient;
 
 use Exception;
 
-class Request
+class SignRequest
 {
 
      /**
@@ -13,7 +13,7 @@ class Request
     public static function create($params)
     {
         return ApiRequestor::post(
-            Config::getBaseUrl() . '/v1/gosign/create',
+            Config::getBaseUrl() . 'api/v1/gosign/create',
             Config::$secretKey,
             $params
         );

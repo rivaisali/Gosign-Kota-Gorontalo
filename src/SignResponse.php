@@ -3,17 +3,24 @@ namespace GosignClient;
 
 use Exception;
 
-class Response
+class SignResponse
 {
 
     private $response;
 
     public function __construct($input_source = "php://input")
     {
-        $headers = getallheaders();
-        $client = $headers['Client'];
+        $payload = file_get_contents($input_source);
+        $headers   = getallheaders();
+        $client    = $headers['Client'];
         $signature = $headers['Signature'];
-        
+
+        //Encrypt Payload
+        $encryption_key  = Config::$secretKey;
+        $iv              = hex2bin(md5(Config::$clientKey));
+        $method          = "AES-256-CBC";
+
+
         if (!isset($signature) && !isset($client)) {
             throw new Exception(
                 'The SecretKey/ClientKey is null, You need to set the secret-key from Config. Please double-check Config and SecretKey key. ' .
@@ -24,7 +31,7 @@ class Response
 
         // Check if the payload is json or urlencoded.
         if (strpos($payload, 'payload=') === 0) {
-            $payload = substr(urldecode($payload), 8);
+            return false;
         }
 
         if (!$this->validateSignature($client, $signature, $payload)) {
@@ -32,20 +39,12 @@ class Response
                 'The SecretKey/ClientKey is invalid, as it is an empty string. Please double-check your SecretKey key. ' .
                 'for the details or contact support at gosign@gorontalokota.go.id if you have any questions.'
             );
-            return false;
+           return false;
         }
-
-        $payload = json_decode(file_get_contents($input_source), true);
-        $this->response = $payload;
-
+        
+        $data =  openssl_decrypt(base64_decode(json_decode($payload, true)['hash']), $method, $encryption_key, 0, $iv);
+        $this->response = $data;
         return true;
-    }
-
-    public function __get($name)
-    {
-        if (isset($this->response->$name)) {
-            return $this->response->$name;
-        }
     }
 
     public function getResponse()
@@ -53,11 +52,11 @@ class Response
         return $this->response;
     }
 
-    protected function validateSignature($client, $goSignSignature, $payload)
+    protected function validateSignature($client, $signature, $payload)
     {
         $payloadHash = hash_hmac('sha256', $payload, Config::$secretKey);
         if($client == Config::$clientKey){
-            return ($payloadHash == $goSignSignature);
+            return ($payloadHash == $signature);
         }else {
             return false;
         } 

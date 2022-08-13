@@ -14,70 +14,70 @@ class ApiRequestor
      * Send GET request
      *
      * @param string $url
-     * @param string $server_key
+     * @param string $secret_key
      * @param mixed[] $data_hash
      * @return mixed
      * @throws Exception
      */
-    public static function get($url, $server_key, $data_hash)
+    public static function get($url, $client_key, $secret_key, $data_hash)
     {
-        return self::remoteCall($url, $server_key, $data_hash, 'GET');
+        return self::remoteCall($url, $client_key, $secret_key, $data_hash, 'GET');
     }
 
     /**
      * Send POST request
      *
      * @param string $url
-     * @param string $server_key
+     * @param string $secret_key
      * @param mixed[] $data_hash
      * @return mixed
      * @throws Exception
      */
-    public static function post($url, $server_key, $data_hash)
+    public static function post($url, $client_key, $secret_key, $data_hash)
     {
-        return self::remoteCall($url, $server_key, $data_hash, 'POST');
+        return self::remoteCall($url, $client_key, $secret_key, $data_hash, 'POST');
     }
 
     /**
      * Send PATCH request
      *
      * @param string $url
-     * @param string $server_key
+     * @param string $secret_key
      * @param mixed[] $data_hash
      * @return mixed
      * @throws Exception
      */
-    public static function patch($url, $server_key, $data_hash)
+    public static function patch($url, $client_key, $secret_key, $data_hash)
     {
-        return self::remoteCall($url, $server_key, $data_hash, 'PATCH');
+        return self::remoteCall($url, $client_key, $secret_key, $data_hash, 'PATCH');
     }
 
     /**
      * Actually send request to API server
      *
      * @param string $url
-     * @param string $server_key
+     * @param string $secret_key
      * @param mixed[] $data_hash
      * @param bool $post
      * @return mixed
      * @throws Exception
      */
-    public static function remoteCall($url, $secret_key, $data_hash, $method)
+    public static function remoteCall($url, $client_key, $secret_key, $data_hash, $method)
     {
         $ch = curl_init();
 
-        if (!$server_key) {
+        if (!$client_key && !$secret_key) {
             throw new Exception(
                 'The SecretKey/ClientKey is null, You need to set the server-key from Config. Please double-check Config and SecretKey key. ' .
                 'for the details or contact support at gosign@gorontalokota.go.id if you have any questions.'
             );
         } else {
-            if ($server_key == "") {
+            if (!$client_key && $secret_key == "") {
                 throw new Exception(
                     'The SecretKey/ClientKey is invalid, as it is an empty string. Please double-check your SecretKey key. ' .
                     'for the details or contact support at gosign@gorontalokota.go.id if you have any questions.'
                 );
-            } elseif (preg_match('/\s/',$server_key)) {
+            } elseif (preg_match('/\s/',$client_key) && preg_match('/\s/',$secret_key)) {
                 throw new Exception(
                     'The SecretKey/ClientKey is contains white-space. Please double-check your API key. Please double-check your SecretKey key. ' .
                     'for the details or contact support at gosign@gorontalokota.go.id if you have any questions.'
@@ -92,7 +92,7 @@ class ApiRequestor
                 'Content-Type: application/json',
                 'Accept: application/json',
                 'User-Agent: gosign-client-php-v1.0.0',
-                'Authorization: Basic ' . base64_encode($secret_key . ':')
+                'Authorization: Basic ' . base64_encode($client_key . ':'.$secret_key)
             ),
             CURLOPT_RETURNTRANSFER => 1
         );

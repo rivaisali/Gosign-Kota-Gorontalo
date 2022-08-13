@@ -21,23 +21,17 @@ class Config
      */
     public static $clientKey;
    
-    /**
-     * Default options for every request
-     * 
-     * @static
-     */
-    public static $curlOptions = array();
 
-    const BASE_URL = 'https://api.gorontalokota.go.id';
+    const BASE_URL = 'http://localhost:8000/';
 
     /**
      * Get baseUrl
      * 
-     * @return string Midtrans API URL, depends on $isProduction
+     * @return string Gosign API URL, depends on $isProduction
      */
     public static function getBaseUrl()
     {
-        Config::BASE_URL;
+        return Config::BASE_URL;
     }
 
 }
