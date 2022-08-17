@@ -22,7 +22,17 @@ class Config
     public static $clientKey;
    
 
-    const BASE_URL = 'http://localhost:8000/';
+   
+    /**
+     * Default options for every request
+     * 
+     * @static
+     */
+    public static $curlOptions = array();
+
+    const DEVELOPMENT_BASE_URL = 'http://localhost:8000';
+    const PRODUCTION_BASE_URL = 'https://gosign.gorontalokota.go.id';
+
 
     /**
      * Get baseUrl
@@ -31,7 +41,9 @@ class Config
      */
     public static function getBaseUrl()
     {
-        return Config::BASE_URL;
+        return Config::$isProduction ?
+        Config::PRODUCTION_BASE_URL : Config::DEVELOPMENT_BASE_URL;
     }
 
+    
 }
