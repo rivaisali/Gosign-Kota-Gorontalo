@@ -44,7 +44,8 @@ catch (\Exception $e) {
 
 ```
 
-#### Response Callback Dari Gosign (*Webhook
+### Response Callback Dari Gosign (*Webhook
+#### Buat Satu Route Callback untuk memproses response setelah Dokumen Berhasil atau ditolak dari Gosign
 
 ```php
 require(__DIR__ . "/vendor/autoload.php");
