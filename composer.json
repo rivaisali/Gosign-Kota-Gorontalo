@@ -1,5 +1,5 @@
 {
-    "name": "diskominfogtokota/gosign-client",
+    "name": "gorontalokota/gosign-client",
     "description": "Library Integrasi Gosign",
     "type": "library",
     "require": {
@@ -7,7 +7,7 @@
         "ext-curl": "*",
         "ext-json": "*"
     },
-    "license": "proprietary",
+    "license": "MIT",
     
     "autoload": {
         "psr-4": {
