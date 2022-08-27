@@ -5,7 +5,7 @@
 Instalasi menggunakan composer :
 
 ```
-composer require rivaisali/gosign-client
+composer require gorontalokota/gosign-client
 ```
 
 ## Cara Menggunakan
