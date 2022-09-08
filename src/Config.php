@@ -21,6 +21,13 @@ class Config
      */
     public static $clientKey;
    
+ /**
+     * Your Production Status
+     * 
+     * @static
+     */
+    public static $isProduction = false;
+
 
    
     /**
