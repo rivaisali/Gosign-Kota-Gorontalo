@@ -35,8 +35,8 @@ try {
         'sign_reason'     => 'required', // Alasan Penandatanganan\
         'sign_type'       => 'image atau qrcode',
         'sign_image'      => 'required', //url image TTE jika type image
-        'sign_width'      => '100', ukuran lebar qrcode/image dalam pixel
-        'sign_height'     => '100', ukuran tinggi qrcode/image dalam pixel
+        'sign_width'      => '100', //ukuran lebar qrcode/image dalam pixel
+        'sign_height'     => '100', //ukuran tinggi qrcode/image dalam pixel
                     
     );
     $request = SignRequest::create($params);
