@@ -24,15 +24,20 @@ Config::$secretKey = "secret";
 
 try {
     $params = array(
-        'client_id'     => 'required',
-        'document_id'   => 'required', //Dokumen ID (* disarankan UUID
-        'title'         => 'required', //Judul Dokumen
-        'assign_to'     => 'required', //NIK Penandatangan
-        'document_url'  => 'required', //URL File Dokumen (* Wajib Https
+        'client_id'       => 'required',
+        'document_id'     => 'required', //Dokumen ID (* disarankan UUID
+        'title'           => 'required', //Judul Dokumen
+        'assign_to'       => 'required', //NIK Penandatangan
+        'document_url'    => 'required', //URL File Dokumen (* Wajib Https
         'document_status' => 'required', //Status Dokumen Yang dikirim
         'sign_symbol'     => '*', //Simbol untuk untuk koordinat lokasi tanda tangan (ex. *,@,#,|,^,$
         'sign_category'   => 'visible', // Kategori Tanda tangan (* Visible atau Invisible
-        'sign_reason'     => 'required', // Alasan Penandatanganan
+        'sign_reason'     => 'required', // Alasan Penandatanganan\
+        'sign_type'       => 'image atau qrcode',
+        'sign_image'      => 'required', //url image TTE jika type image
+        'sign_width'      => '100', ukuran lebar qrcode/image dalam pixel
+        'sign_height'     => '100', ukuran tinggi qrcode/image dalam pixel
+                    
     );
     $request = SignRequest::create($params);
     echo $request->message;
