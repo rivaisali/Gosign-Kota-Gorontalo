@@ -33,7 +33,7 @@ try {
         'sign_symbol'     => '*', //Simbol untuk untuk koordinat lokasi tanda tangan (ex. *,@,#,|,^,$
         'sign_category'   => 'visible', // Kategori Tanda tangan (* Visible atau Invisible
         'sign_reason'     => 'required', // Alasan Penandatanganan\
-        'sign_type'       => 'image atau qrcode',
+        'sign_type'       => 'image atau qrcode', //Wajib isi jika category "visible"
         'sign_image'      => 'required', //url image TTE jika type image
         'sign_width'      => '100', //ukuran lebar qrcode/image dalam pixel
         'sign_height'     => '100', //ukuran tinggi qrcode/image dalam pixel
