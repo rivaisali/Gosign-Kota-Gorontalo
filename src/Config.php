@@ -37,7 +37,7 @@ class Config
      */
     public static $curlOptions = array();
 
-    const DEVELOPMENT_BASE_URL = 'http://localhost:8000';
+    const DEVELOPMENT_BASE_URL = 'https://gosign-dev.gorontalokota.go.id';
     const PRODUCTION_BASE_URL = 'https://gosign.gorontalokota.go.id';
 
 
