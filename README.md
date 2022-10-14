@@ -62,7 +62,7 @@ $custom_text = array(
         
 $custom_image_text = json_encode($custom_text, true);
 
-[Link testing Image custom]([https://www.google.com](https://gosign.gorontalokota.go.id/try/custom-image))
+[Link testing Image custom](https://gosign.gorontalokota.go.id/try/custom-image)
 
 ```
 
