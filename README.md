@@ -55,7 +55,7 @@ $custom_text = array(
             "text_size" => 52,
             "x" => 5,
             "y" => 50,
-            "align" => "center|left|right"
+            "align" => "center|left|right",
             "font" => "font.ttf",
             "color" => "#000000",
         );
