@@ -35,6 +35,8 @@ try {
         'sign_reason'     => 'required', // Alasan Penandatanganan\
         'sign_type'       => 'image atau qrcode', //Wajib isi jika category "visible"
         'sign_image'      => 'required', //url image TTE jika type image
+        'custom_image'    => 'true/false'  //Jika menggunakan image custom dengan text
+        'custom_image_text'=> 'tipe json' //contoh dibawah
         'sign_width'      => '100', //ukuran lebar qrcode/image dalam pixel
         'sign_height'     => '100', //ukuran tinggi qrcode/image dalam pixel
                     
@@ -46,6 +48,21 @@ catch (\Exception $e) {
     echo $e->getMessage();
 }
 
+
+//Contoh Request Custom Image Text
+$custom_text = array(
+            "text" => "Ditetapkan di Gorontalo,/n Pada tanggal {{date}},",
+            "text_size" => 52,
+            "x" => 5,
+            "y" => 50,
+            "align" => "center|left|right"
+            "font" => "font.ttf",
+            "color" => "#000000",
+        );
+        
+$custom_image_text = json_encode($custom_text, true);
+
+Link testing Image custom https://gosign.gorontalokota.go.id/try/custom-image
 
 ```
 
