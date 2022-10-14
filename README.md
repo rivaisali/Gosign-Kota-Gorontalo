@@ -35,8 +35,8 @@ try {
         'sign_reason'     => 'required', // Alasan Penandatanganan\
         'sign_type'       => 'image atau qrcode', //Wajib isi jika category "visible"
         'sign_image'      => 'required', //url image TTE jika type image
-        'custom_image'    => 'true/false'  //Jika menggunakan image custom dengan text
-        'custom_image_text'=> 'tipe json' //contoh dibawah
+        'custom_image'    => 'true/false',  //Jika menggunakan image custom dengan text
+        'custom_image_text' => 'tipe json', //contoh dibawah
         'sign_width'      => '100', //ukuran lebar qrcode/image dalam pixel
         'sign_height'     => '100', //ukuran tinggi qrcode/image dalam pixel
                     
@@ -62,7 +62,7 @@ $custom_text = array(
         
 $custom_image_text = json_encode($custom_text, true);
 
-Link testing Image custom https://gosign.gorontalokota.go.id/try/custom-image
+[Link testing Image custom]([https://www.google.com](https://gosign.gorontalokota.go.id/try/custom-image))
 
 ```
 
