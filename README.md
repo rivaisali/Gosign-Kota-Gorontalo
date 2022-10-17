@@ -56,7 +56,7 @@ $custom_text = array(
             "x" => 5,
             "y" => 50,
             "align" => "center|left|right",
-            "font" => "font.ttf",
+            "font" => "arial|times|bookmark",
             "color" => "#000000",
         );
         
