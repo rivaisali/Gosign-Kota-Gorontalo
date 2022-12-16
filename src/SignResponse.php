@@ -15,11 +15,6 @@ class SignResponse
         $client    = $headers['Client'];
         $signature = $headers['Signature'];
 
-        //Encrypt Payload
-        $encryption_key  = Config::$secretKey;
-        $iv              = hex2bin(md5(Config::$clientKey));
-        $method          = "AES-256-CBC";
-
 
         if (!isset($signature) && !isset($client)) {
             throw new Exception(
@@ -42,8 +37,7 @@ class SignResponse
            return false;
         }
         
-        $data =  openssl_decrypt(base64_decode(json_decode($payload, true)['hash']), $method, $encryption_key, 0, $iv);
-        $this->response = $data;
+        $this->response = json_decode($payload, true);
         return true;
     }
 
